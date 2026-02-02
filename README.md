@@ -1,17 +1,17 @@
-# Enock Nyakaana | Filmmaker & Visual Storyteller
+# Enock Nyakaana Portfolio
 
-Welcome to the official portfolio repository for **Enock Nyakaana**. This website showcases my work as a filmmaker, visual storyteller, and photographer based in Uganda.
+This repository hosts the official portfolio website for **Enock Nyakaana**, a Filmmaker and Visual Storyteller based in Uganda. The site is maintained to showcase his creative work, film projects, and photography.
 
 ## 🎬 Project Overview
 
-This is a static portfolio website designed to highlight my creative journey, film projects, and photography skills. The site is built with performance and clean design in mind, ensuring a seamless experience for visitors.
+The website is a static single-page application designed to highlight Enock's career and achievements. It features a clean, responsive design that works seamlessly across devices.
 
 ### Key Sections
 *   **Hero:** Introduction and tagline.
 *   **About Me:** Personal background, education (Kampala Film School), and achievements.
-*   **Skills:** Overview of my expertise in Editing, Videography, and Photography.
-*   **Films:** Showcase of my directorial work, including "Charcoal and Courage" and "Young Motherhood".
-*   **Gallery:** A curated collection of my photography capturing the beauty of Uganda.
+*   **Skills:** Overview of expertise in Editing, Videography, and Photography.
+*   **Films:** Showcase of directorial work, including "Charcoal and Courage" and "Young Motherhood".
+*   **Gallery:** A curated collection of photography capturing the beauty of Uganda.
 *   **Contact:** Links to connect via Email, Instagram, and YouTube.
 
 ## 🛠️ Technologies Used
@@ -23,15 +23,15 @@ This is a static portfolio website designed to highlight my creative journey, fi
 
 ## 🚀 Getting Started
 
-To view or edit this project locally on your machine:
+To view or edit this project locally:
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+    git clone [repository-url]
     ```
 2.  **Navigate to the project folder:**
     ```bash
-    cd YOUR_REPO_NAME
+    cd [repository-name]
     ```
 3.  **Open `index.html` in your browser:**
     Simply double-click the `index.html` file, or if you are using VS Code, use the "Live Server" extension.
