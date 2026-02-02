@@ -1,0 +1,30 @@
+name: Compress Images
+on:
+  pull_request:
+    paths:
+      - 'assets/images/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'assets/images/**'
+
+jobs:
+  build:
+    name: calibreapp/image-actions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Compress Images
+        uses: calibreapp/image-actions@main
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          # For JPEG, quality is 80
+          # For PNG, quality is 80
+          # For WebP, quality is 80
+          jpegQuality: "80"
+          pngQuality: "80"
+          webpQuality: "80"
+          ignorePaths: "node_modules/**,build/**"
