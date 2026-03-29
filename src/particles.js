@@ -1,4 +1,4 @@
-import * as THREE from 'three'
+import { Scene, PerspectiveCamera, WebGLRenderer } from 'three'
 import { init as initParticleField } from './modules/particle-field.js'
 
 export function initParticles() {
@@ -8,11 +8,11 @@ export function initParticles() {
   const w = container.clientWidth || window.innerWidth
   const h = container.clientHeight || window.innerHeight
 
-  const scene = new THREE.Scene()
-  const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 100)
+  const scene = new Scene()
+  const camera = new PerspectiveCamera(75, w / h, 0.1, 100)
   camera.position.z = 5
 
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false })
+  const renderer = new WebGLRenderer({ alpha: true, antialias: false })
   renderer.setSize(w, h)
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   renderer.setClearColor(0x000000, 0)
@@ -20,7 +20,7 @@ export function initParticles() {
 
   // init(scene, options) — returns { points, destroy }
   const { destroy } = initParticleField(scene, {
-    count: 5000,
+    count: window.matchMedia('(max-width: 768px)').matches ? 1200 : 3000,
     spread: 10,
     color: 0xffffff,
     minSize: 1,
@@ -28,14 +28,24 @@ export function initParticles() {
   })
 
   let t = 0
+  let rafId
   function animate() {
-    requestAnimationFrame(animate)
+    rafId = requestAnimationFrame(animate)
     t += 0.001
     scene.rotation.y = t * 0.3
     scene.rotation.x = Math.sin(t) * 0.05
     renderer.render(scene, camera)
   }
   animate()
+
+  // Pause rendering when tab is hidden (battery/performance)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(rafId)
+    } else {
+      animate()
+    }
+  })
 
   window.addEventListener('resize', () => {
     const nw = container.clientWidth || window.innerWidth
@@ -44,4 +54,13 @@ export function initParticles() {
     camera.updateProjectionMatrix()
     renderer.setSize(nw, nh)
   })
+
+  return {
+    destroy: () => {
+      cancelAnimationFrame(rafId)
+      destroy()
+      renderer.dispose()
+      container.removeChild(renderer.domElement)
+    }
+  }
 }
