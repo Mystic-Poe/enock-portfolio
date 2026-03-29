@@ -22,45 +22,51 @@ if (yearEl) yearEl.textContent = new Date().getFullYear()
 const navToggle = document.querySelector('.nav-toggle')
 const navLinks = document.querySelector('.nav-links')
 
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('active')
-  navToggle.classList.toggle('active')
-})
-
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('active')
-    navToggle.classList.remove('active')
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active')
+    navToggle.classList.toggle('active')
   })
-})
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active')
+      navToggle.classList.remove('active')
+    })
+  })
+}
 
 // ── Navbar frosted glass on scroll
-window.addEventListener('scroll', () => {
-  document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50)
-})
+const navbar = document.querySelector('.navbar')
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50)
+  })
+}
 
 // ── Email dropdown
 const emailBtn = document.getElementById('emailBtn')
 const emailDropdown = document.getElementById('emailDropdown')
-let dropdownOpen = false
-
-emailBtn.addEventListener('click', (e) => {
-  e.stopPropagation()
-  dropdownOpen = !dropdownOpen
-  emailDropdown.style.display = dropdownOpen ? 'block' : 'none'
-})
-document.addEventListener('click', (e) => {
-  if (!emailBtn.contains(e.target) && !emailDropdown.contains(e.target)) {
-    dropdownOpen = false
-    emailDropdown.style.display = 'none'
-  }
-})
-emailDropdown.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    dropdownOpen = false
-    emailDropdown.style.display = 'none'
+if (emailBtn && emailDropdown) {
+  let dropdownOpen = false
+  emailBtn.addEventListener('click', (e) => {
+    e.stopPropagation()
+    dropdownOpen = !dropdownOpen
+    emailDropdown.style.display = dropdownOpen ? 'block' : 'none'
   })
-})
+  document.addEventListener('click', (e) => {
+    if (!emailBtn.contains(e.target) && !emailDropdown.contains(e.target)) {
+      dropdownOpen = false
+      emailDropdown.style.display = 'none'
+    }
+  })
+  emailDropdown.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      dropdownOpen = false
+      emailDropdown.style.display = 'none'
+    })
+  })
+}
 
 // ── Smooth anchor scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
