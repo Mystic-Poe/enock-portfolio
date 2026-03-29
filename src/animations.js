@@ -1,6 +1,14 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+gsap.registerPlugin(ScrollTrigger)
+
+// NOTE: This module animates FROM states set in CSS:
+// .reveal, .skill-card, .gallery-item start at opacity:0
+// .hero-title .char starts at opacity:0; transform:translateY(100%)
+// .hero-subtitle, .hero-tagline, .btn start at opacity:0
+// .vision-underline starts at transform:scaleX(0)
+// These CSS initial states must be preserved for animations to work.
 export function initAnimations() {
   // ── Hero text: character-by-character reveal
   const titleEl = document.querySelector('.hero-title')
@@ -94,7 +102,7 @@ export function initAnimations() {
   // ── Vision quote underline draw
   const visionUnderline = document.querySelector('.vision-underline')
   if (visionUnderline) {
-    gsap.to('.vision-underline', {
+    gsap.to(visionUnderline, {
       scaleX: 1,
       duration: 1,
       ease: 'power3.out',
