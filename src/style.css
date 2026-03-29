@@ -1,3 +1,5 @@
+/* Hero background-image set via JS in main.js using import.meta.env.BASE_URL */
+
 /* ===== CSS Variables ===== */
 :root {
   --bg: #0a0a0a;
@@ -118,7 +120,10 @@ img { max-width: 100%; height: auto; display: block; }
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: url('/assets/images/hero-bg.jpg') center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #0a0a0a;
 }
 .hero-canvas {
   position: absolute;
