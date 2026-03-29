@@ -2,6 +2,7 @@ import './style.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { initLenis } from './lenis.js'
+import { initAnimations } from './animations.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -13,6 +14,7 @@ if (heroSection) {
 
 // ── Init smooth scroll
 initLenis()
+initAnimations()
 
 // ── Footer year
 const yearEl = document.getElementById('year')
