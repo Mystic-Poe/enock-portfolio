@@ -23,8 +23,9 @@ function openLightbox(src, alt) {
   overlay.id = 'lightbox-overlay'
   overlay.innerHTML = `
     <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
-    <img src="${src}" alt="${alt}">
+    <img src="${src}" alt="">
   `
+  overlay.querySelector('img').alt = alt
   document.body.appendChild(overlay)
 
   // Prevent body scroll while lightbox is open
