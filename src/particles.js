@@ -9,22 +9,23 @@ export function initParticles() {
   const h = container.clientHeight || window.innerHeight
 
   const scene = new Scene()
-  const camera = new PerspectiveCamera(75, w / h, 0.1, 100)
-  camera.position.z = 5
+  const camera = new PerspectiveCamera(75, w / h, 0.1, 200)
+  camera.position.z = 20
 
-  const renderer = new WebGLRenderer({ alpha: true, antialias: false })
+  const renderer = new WebGLRenderer({ alpha: true, antialias: false, premultipliedAlpha: false })
   renderer.setSize(w, h)
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   renderer.setClearColor(0x000000, 0)
+  renderer.domElement.style.cssText = 'position:absolute;inset:0;background:transparent;display:block;'
   container.appendChild(renderer.domElement)
 
   // init(scene, options) — returns { points, destroy }
   const { destroy } = initParticleField(scene, {
-    count: window.matchMedia('(max-width: 768px)').matches ? 1200 : 3000,
-    spread: 10,
+    count: window.matchMedia('(max-width: 768px)').matches ? 200 : 500,
+    spread: 20,
     color: 0xffffff,
-    minSize: 1,
-    maxSize: 3,
+    minSize: 0.3,
+    maxSize: 0.8,
   })
 
   let t = 0
