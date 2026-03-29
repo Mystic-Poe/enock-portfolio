@@ -5,6 +5,7 @@ import { initLenis } from './lenis.js'
 import { initAnimations } from './animations.js'
 import { initParticles } from './particles.js'
 import { initFilmsScroll } from './films.js'
+import { initLightbox } from './lightbox.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -19,6 +20,7 @@ initLenis()
 initAnimations()
 initParticles()
 initFilmsScroll()
+initLightbox()
 
 // ── Footer year
 const yearEl = document.getElementById('year')
