@@ -1,10 +1,11 @@
 import Lenis from 'lenis'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export function initLenis() {
   const lenis = new Lenis()
 
-  lenis.on('scroll', (e) => gsap.plugins.ScrollTrigger?.update())
+  lenis.on('scroll', ScrollTrigger.update)
 
   gsap.ticker.add((time) => {
     lenis.raf(time * 1000)
